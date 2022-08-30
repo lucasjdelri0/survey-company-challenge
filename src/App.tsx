@@ -1,25 +1,23 @@
-import { Button } from 'antd'
-import logo from './logo.svg'
+import { useMetaMaskAccount } from 'providers/MetaMaskProvider'
+import Page from 'components/layout/Page'
+import Disconnected from 'components/Disconnected'
+import SurveyIntro from 'components/survey/SurveyIntro'
 import './App.css'
 
-const App = (): JSX.Element => (
-  <div className='App'>
-    <header className='App-header'>
-      <img src={logo} className='App-logo' alt='logo' />
-      <p>
-        Edit <code>src/App.tsx</code> and save to reload.
-      </p>
-      <a
-        className='App-link'
-        href='https://reactjs.org'
-        target='_blank'
-        rel='noopener noreferrer'
-      >
-        Learn React
-      </a>
-      <Button type='primary'>My Button</Button>
-    </header>
-  </div>
-)
+const App = (): JSX.Element => {
+  const { connectedAccount } = useMetaMaskAccount()
+
+  return (
+    <Page>
+      {!connectedAccount ? (
+        <Disconnected />
+      ) : (
+        <div className='App-content'>
+          <SurveyIntro />
+        </div>
+      )}
+    </Page>
+  )
+}
 
 export default App
