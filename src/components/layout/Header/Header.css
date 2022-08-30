@@ -1,0 +1,23 @@
+.headerContainer {
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  padding: 0 50px;
+}
+.headerLogo {
+  font-size: 32px;
+}
+.ghLink {
+  display: flex;
+}
+.routesMenu {
+  width: 100%;
+  justify-content: center;
+}
+.headerMenuItem {
+  padding: 8px;
+}

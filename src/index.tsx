@@ -1,13 +1,23 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import MetaMaskProvider from './providers/MetaMaskProvider'
 import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 
+declare global {
+  interface Window {
+    ethereum: any
+    ethersProvider: any
+  }
+}
+
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
-    <App />
+    <MetaMaskProvider>
+      <App />
+    </MetaMaskProvider>
   </React.StrictMode>
 )
 
