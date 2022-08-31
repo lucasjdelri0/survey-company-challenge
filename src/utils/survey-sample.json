@@ -1,0 +1,223 @@
+[
+  {
+    "id": 0,
+    "title": "Personal Preferences",
+    "image": "https://nuestropsicologoenmadrid.com/wp-content/uploads/2021/06/Indecision-Patologica-930x620.jpg",
+    "questions": [
+      {
+        "id": 0,
+        "text": "Pick a color",
+        "image": "https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg",
+        "lifetimeSeconds": 9,
+        "options": [
+          {
+            "id": 0,
+            "text": "Red"
+          },
+          {
+            "id": 1,
+            "text": "Blue"
+          },
+          {
+            "id": 2,
+            "text": "Green"
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "text": "Pick a fruit",
+        "image": "https://filedn.com/ltOdFv1aqz1YIFhf4gTY8D7/ingus-info/BLOGS/Photography-stocks3/stock-photography-slider.jpg",
+        "lifetimeSeconds": 13,
+        "options": [
+          {
+            "id": 0,
+            "text": "Orange"
+          },
+          {
+            "id": 1,
+            "text": "Banana"
+          },
+          {
+            "id": 2,
+            "text": "Apple"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "text": "Pick an animal",
+        "image": "https://filedn.com/ltOdFv1aqz1YIFhf4gTY8D7/ingus-info/BLOGS/Photography-stocks3/stock-photography-slider.jpg",
+        "lifetimeSeconds": 5,
+        "options": [
+          {
+            "id": 0,
+            "text": "Tiger"
+          },
+          {
+            "id": 1,
+            "text": "Lion"
+          },
+          {
+            "id": 2,
+            "text": "Crocodile"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "text": "Pick an ice cream flavor",
+        "image": "https://filedn.com/ltOdFv1aqz1YIFhf4gTY8D7/ingus-info/BLOGS/Photography-stocks3/stock-photography-slider.jpg",
+        "lifetimeSeconds": 5,
+        "options": [
+          {
+            "id": 0,
+            "text": "Chocolate Chip"
+          },
+          {
+            "id": 1,
+            "text": "Cookies ‘N Cream"
+          },
+          {
+            "id": 2,
+            "text": "Cotton Candy"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "title": "Development Tools",
+    "image": "https://48tools.com/wp-content/uploads/2015/09/shortlink.png",
+    "questions": [
+      {
+        "id": 0,
+        "text": "Frontend framework",
+        "image": "https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg",
+        "lifetimeSeconds": 12,
+        "options": [
+          {
+            "id": 0,
+            "text": "Flutter"
+          },
+          {
+            "id": 1,
+            "text": "React Js"
+          },
+          {
+            "id": 2,
+            "text": "Angular Js"
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "text": "State management tool",
+        "image": "https://filedn.com/ltOdFv1aqz1YIFhf4gTY8D7/ingus-info/BLOGS/Photography-stocks3/stock-photography-slider.jpg",
+        "lifetimeSeconds": 6,
+        "options": [
+          {
+            "id": 0,
+            "text": "Redux"
+          },
+          {
+            "id": 1,
+            "text": "Mobx"
+          },
+          {
+            "id": 2,
+            "text": "Context API"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "text": "Git GUI",
+        "image": "https://filedn.com/ltOdFv1aqz1YIFhf4gTY8D7/ingus-info/BLOGS/Photography-stocks3/stock-photography-slider.jpg",
+        "lifetimeSeconds": 8,
+        "options": [
+          {
+            "id": 0,
+            "text": "GitHub Desktop"
+          },
+          {
+            "id": 1,
+            "text": "GitKraken"
+          },
+          {
+            "id": 2,
+            "text": "SourceTree"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Sport Teams or Players",
+    "image": "https://ec.europa.eu/eurostat/documents/6921402/9104237/Shutterstock_Lisa_Kolbasa.png/f988f8b6-4138-4a91-9761-885bacab0ce2?t=1533725002000",
+    "questions": [
+      {
+        "id": 0,
+        "text": "Football team",
+        "image": "https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg",
+        "lifetimeSeconds": 8,
+        "options": [
+          {
+            "id": 0,
+            "text": "Talleres de Córdoba"
+          },
+          {
+            "id": 1,
+            "text": "River Plate"
+          },
+          {
+            "id": 2,
+            "text": "Boca Juniors"
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "text": "Basketball team",
+        "image": "https://filedn.com/ltOdFv1aqz1YIFhf4gTY8D7/ingus-info/BLOGS/Photography-stocks3/stock-photography-slider.jpg",
+        "lifetimeSeconds": 12,
+        "options": [
+          {
+            "id": 0,
+            "text": "San Antonio Spurs"
+          },
+          {
+            "id": 1,
+            "text": "Chicago Bulls"
+          },
+          {
+            "id": 2,
+            "text": "Orlando Magic"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "text": "Tennis player",
+        "image": "https://filedn.com/ltOdFv1aqz1YIFhf4gTY8D7/ingus-info/BLOGS/Photography-stocks3/stock-photography-slider.jpg",
+        "lifetimeSeconds": 6,
+        "options": [
+          {
+            "id": 0,
+            "text": "Roger Federer"
+          },
+          {
+            "id": 1,
+            "text": "Rafael Nadal"
+          },
+          {
+            "id": 2,
+            "text": "Novak Djokovic"
+          }
+        ]
+      }
+    ]
+  }
+]
