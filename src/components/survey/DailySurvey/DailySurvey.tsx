@@ -15,35 +15,36 @@ export const DailySurvey = ({
 }: DailySurveyProps): JSX.Element => {
   const { id: surveyId, questions } = dataSource
 
-  const [current, setCurrent] = useState(0)
-  const [answers, setAnswers] = useState<SurveyAnswers[]>(
+  const [currentQuestionId, setCurrentQuestionId] = useState(0)
+  const [surveyAnswers, setSurveyAnswers] = useState<SurveyAnswers[]>(
     questions.map(({ id }) => ({
       questionId: id,
       answerId: 0,
     }))
   )
   const [timeleft, setTimeleft] = useState(
-    questions[current]?.lifetimeSeconds ?? -1
+    questions[currentQuestionId]?.lifetimeSeconds ?? -1
   )
 
-  const currentQuestion = questions.find(({ id }) => id === current)
-  const answerValue = answers.find(
-    ({ questionId }) => questionId === current
+  const currentQuestion = questions.find(({ id }) => id === currentQuestionId)
+
+  const currentQuestionAnswer = surveyAnswers.find(
+    ({ questionId }) => questionId === currentQuestionId
   )?.answerId
 
-  const answerIds = answers.reduce(
+  const answerIds = surveyAnswers.reduce(
     (answerIds: number[], { answerId }) => [...answerIds, answerId],
     []
   )
 
   useEffect(() => {
-    if (current < questions.length) {
-      setTimeleft(questions[current].lifetimeSeconds)
+    if (currentQuestionId < questions.length) {
+      setTimeleft(questions[currentQuestionId].lifetimeSeconds)
     }
-  }, [current, questions])
+  }, [currentQuestionId, questions])
 
   useEffect(() => {
-    if (current < questions.length) {
+    if (currentQuestionId < questions.length) {
       const downloadTimer = setInterval(() => {
         if (timeleft < 1) {
           clearInterval(downloadTimer)
@@ -51,62 +52,62 @@ export const DailySurvey = ({
           setTimeleft(timeleft - 1)
         }
       }, 1000)
-
       return () => {
         clearInterval(downloadTimer)
       }
     }
-  }, [current, questions, timeleft])
+  }, [currentQuestionId, questions, timeleft])
 
   useEffect(() => {
     const next = (): void => {
-      setCurrent(current + 1)
+      setCurrentQuestionId(currentQuestionId + 1)
     }
 
-    if (current < questions.length) {
+    if (currentQuestionId < questions.length) {
       const timer = setTimeout(() => next(), (timeleft + 0.1) * 1000)
-
       return () => {
         clearTimeout(timer)
       }
     }
-  }, [current, questions, timeleft])
+  }, [currentQuestionId, questions, timeleft])
 
   const onChange = (e: RadioChangeEvent): void => {
-    const newArray = answers.map((answer) =>
-      answer.questionId !== current
+    const newArray = surveyAnswers.map((answer) =>
+      answer.questionId !== currentQuestionId
         ? answer
         : { questionId: answer.questionId, answerId: e.target.value }
     )
-    setAnswers(newArray)
+    setSurveyAnswers(newArray)
   }
 
   return (
     <>
-      <Steps current={current}>
+      <Steps current={currentQuestionId}>
         {questions.map(({ id }) => (
           <Step
             key={id}
             subTitle={
-              id === current && timeleft !== 0 && `Left: ${timeleft} sec.`
+              id === currentQuestionId &&
+              timeleft !== 0 &&
+              `Left: ${timeleft} sec.`
             }
           />
         ))}
       </Steps>
       <div className='steps-content'>
-        {current >= questions.length ? (
+        {currentQuestionId >= questions.length ? (
           <SurveyOverview
             loading={isLoading}
             surveyId={surveyId}
             questions={questions}
-            answers={answers}
+            answers={surveyAnswers}
             onSubmit={() => onSubmit?.(surveyId, answerIds)}
           />
         ) : (
           <SurveyQuestion
             question={currentQuestion}
             onAnswer={onChange}
-            value={answerValue}
+            value={currentQuestionAnswer}
           />
         )}
       </div>
