@@ -85,7 +85,12 @@ export const DailySurvey = ({
     <>
       <Steps current={current}>
         {questions.map(({ id }) => (
-          <Step key={id} title={id === current && timeleft !== 0 && timeleft} />
+          <Step
+            key={id}
+            subTitle={
+              id === current && timeleft !== 0 && `Left: ${timeleft} sec.`
+            }
+          />
         ))}
       </Steps>
       <div className='steps-content'>
