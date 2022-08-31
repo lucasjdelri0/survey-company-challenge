@@ -19,7 +19,7 @@ export const Page = (props: PageProps): JSX.Element => (
     >
       <Breadcrumb style={{ margin: '16px 0' }}>
         <Breadcrumb.Item>
-          <HomeOutlined /> <span>Home</span>
+          <HomeOutlined /> <a href='/'>Home</a>
         </Breadcrumb.Item>
       </Breadcrumb>
       <div className='site-layout-background' style={{ padding: 24 }}>
