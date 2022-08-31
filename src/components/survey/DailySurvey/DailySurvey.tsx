@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Steps, RadioChangeEvent } from 'antd'
+import { SurveyAnswers } from '../types'
 import { DailySurveyProps } from './DailySurvey.props'
 import SurveyQuestion from './_components/SurveyQuestion'
 import SurveyOverview from './_components/SurveyOverview'
@@ -12,42 +13,79 @@ export const DailySurvey = ({
   isLoading = false,
   onSubmit,
 }: DailySurveyProps): JSX.Element => {
-  const [current, setCurrent] = useState(0)
-  const [value, setValue] = useState(0)
-  const [answerIds, setAnswerIds] = useState<number[]>([])
   const { id: surveyId, questions } = dataSource
 
+  const [current, setCurrent] = useState(0)
+  const [answers, setAnswers] = useState<SurveyAnswers[]>(
+    questions.map(({ id }) => ({
+      questionId: id,
+      answerId: 0,
+    }))
+  )
+  const [timeleft, setTimeleft] = useState(
+    questions[current]?.lifetimeSeconds ?? -1
+  )
+
   const currentQuestion = questions.find(({ id }) => id === current)
+  const answerValue = answers.find(
+    ({ questionId }) => questionId === current
+  )?.answerId
+
+  const answerIds = answers.reduce(
+    (answerIds: number[], { answerId }) => [...answerIds, answerId],
+    []
+  )
+
+  useEffect(() => {
+    if (current < questions.length) {
+      setTimeleft(questions[current].lifetimeSeconds)
+    }
+  }, [current, questions])
+
+  useEffect(() => {
+    if (current < questions.length) {
+      const downloadTimer = setInterval(() => {
+        if (timeleft < 1) {
+          clearInterval(downloadTimer)
+        } else {
+          setTimeleft(timeleft - 1)
+        }
+      }, 1000)
+
+      return () => {
+        clearInterval(downloadTimer)
+      }
+    }
+  }, [current, questions, timeleft])
 
   useEffect(() => {
     const next = (): void => {
-      setValue(0)
       setCurrent(current + 1)
     }
 
     if (current < questions.length) {
-      setAnswerIds([...answerIds, value])
-      const timer = setTimeout(
-        () => next(),
-        questions[current].lifetimeSeconds * 1000
-      )
+      const timer = setTimeout(() => next(), (timeleft + 0.1) * 1000)
+
       return () => {
         clearTimeout(timer)
       }
     }
-  }, [current, questions])
+  }, [current, questions, timeleft])
 
   const onChange = (e: RadioChangeEvent): void => {
-    answerIds.pop()
-    setValue(e.target.value)
-    setAnswerIds([...answerIds, e.target.value])
+    const newArray = answers.map((answer) =>
+      answer.questionId !== current
+        ? answer
+        : { questionId: answer.questionId, answerId: e.target.value }
+    )
+    setAnswers(newArray)
   }
 
   return (
     <>
       <Steps current={current}>
         {questions.map(({ id }) => (
-          <Step key={id} />
+          <Step key={id} title={id === current && timeleft !== 0 && timeleft} />
         ))}
       </Steps>
       <div className='steps-content'>
@@ -56,14 +94,14 @@ export const DailySurvey = ({
             loading={isLoading}
             surveyId={surveyId}
             questions={questions}
-            answerIds={answerIds}
+            answers={answers}
             onSubmit={() => onSubmit?.(surveyId, answerIds)}
           />
         ) : (
           <SurveyQuestion
             question={currentQuestion}
             onAnswer={onChange}
-            value={value}
+            value={answerValue}
           />
         )}
       </div>

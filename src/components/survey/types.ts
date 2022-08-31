@@ -17,3 +17,8 @@ export interface Survey {
   image: string
   questions: Question[]
 }
+
+export interface SurveyAnswers {
+  questionId: number
+  answerId: number
+}

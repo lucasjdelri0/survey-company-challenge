@@ -6,7 +6,7 @@ const { Title } = Typography
 export const SurveyOverview = ({
   surveyId,
   questions,
-  answerIds,
+  answers,
   loading,
   onSubmit,
 }: SurveyOverviewProps): JSX.Element => (
@@ -16,7 +16,9 @@ export const SurveyOverview = ({
     </Title>
     {questions.map(({ id, text, options }) => {
       const optSelected = options.find(
-        ({ id: optionId }) => answerIds[id] === optionId
+        ({ id: optionId }) =>
+          optionId ===
+          answers.find(({ questionId }) => questionId === id)?.answerId
       )
       return (
         <div key={id}>
@@ -30,7 +32,7 @@ export const SurveyOverview = ({
     <Button
       type='primary'
       loading={loading}
-      onClick={() => onSubmit?.(surveyId, answerIds)}
+      onClick={onSubmit}
       style={{ width: '100%' }}
     >
       Submit

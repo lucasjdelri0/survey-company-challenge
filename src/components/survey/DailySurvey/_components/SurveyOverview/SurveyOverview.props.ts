@@ -1,9 +1,9 @@
-import { Question } from 'components/survey/types'
+import { Question, SurveyAnswers } from 'components/survey/types'
 
 export interface SurveyOverviewProps {
   surveyId: number
   questions: Question[]
-  answerIds: number[]
+  answers: SurveyAnswers[]
   loading: boolean
-  onSubmit: (surveyId: number, answerIds: number[]) => void
+  onSubmit: () => void
 }
