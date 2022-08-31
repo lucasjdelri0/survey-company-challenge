@@ -1,5 +1,5 @@
 import { Typography, Space } from 'antd'
-import ConnectWallet from 'components/ConnectWallet'
+import ConnectWallet from 'components/web3/ConnectWallet'
 import { useMetaMaskAccount } from 'providers/MetaMaskProvider'
 
 const { Title, Text } = Typography

@@ -8,8 +8,8 @@ import { getQuizContract } from 'utils/contractHelpers'
 import { getRpcErrorMsg } from 'utils'
 import SurveyIntro from 'components/survey/SurveyIntro'
 import { Survey } from 'components/survey/types'
+import Disconnected from 'components/web3/Disconnected'
 import './App.css'
-import Disconnected from 'components/Disconnected'
 
 const randomSurvey: Survey =
   surveySamples[Math.floor(Math.random() * surveySamples.length)]
