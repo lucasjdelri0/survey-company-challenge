@@ -27,7 +27,7 @@ export const Page = (props: PageProps): JSX.Element => (
       </div>
     </Content>
     <Footer style={{ textAlign: 'center' }}>
-      Survey Challenge for Rather Labs (2022)
+      Survey Challenge for Membrane (2022)
     </Footer>
   </Layout>
 )
