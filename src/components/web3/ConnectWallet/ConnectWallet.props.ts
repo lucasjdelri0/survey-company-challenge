@@ -1,3 +1,3 @@
 export interface ConnectWalletProps {
-  onClick: () => void
+  onClick?: () => void
 }
